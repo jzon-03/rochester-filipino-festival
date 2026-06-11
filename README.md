@@ -1,59 +1,61 @@
-# RochesterFilipinoFestival
+﻿# Rochester Filipino Festival
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+A vibrant celebration of Filipino culture and heritage in Upstate New York.
 
-## Development server
+## Website
 
-To start a local development server, run:
+Visit us at: [rochesterfilipinofestival.upstatepinoy.com](https://rochesterfilipinofestival.upstatepinoy.com)
 
-```bash
-ng serve
-```
+## Event Details
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **When:** July 25, 2026 (Friday)
+- **Time:** 11 AM - 6 PM
+- **Where:** 7272 W Henrietta Road, Rush, NY 14543
+- **Admission:** FREE
 
-## Code scaffolding
+## Features
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Traditional Filipino cultural performances
+- Authentic Filipino cuisine
+- Arts and crafts vendors
+- Family-friendly activities
+- Live music and entertainment
 
-```bash
-ng generate component component-name
-```
+## Development
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+This website is built with Angular 21.
 
-```bash
-ng generate --help
-```
+### Prerequisites
 
-## Building
+- Node.js 20 or higher
+- npm 10 or higher
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Installation
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Development Server
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Navigate to `http://localhost:4200/`
 
-## Additional Resources
+### Build
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run build
+```
+
+### Deployment
+
+The site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
+## License
+
+© 2026 Rochester Filipino Festival. All rights reserved.

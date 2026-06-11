@@ -1,0 +1,216 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Rochester Filipino Festival</h1>
+    <p class="hero-subtitle">Celebrating Filipino Culture & Heritage</p>
+    <div class="hero-details">
+      <p class="hero-date">{{ eventDetails.date }}</p>
+      <p class="hero-location">{{ eventDetails.location }}</p>
+    </div>
+    <button class="cta-button" (click)="scrollToSection('schedule')">
+      View Schedule
+    </button>
+  </div>
+  <div class="scroll-indicator" (click)="scrollToSection('about')">
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="section-title">Welcome to Our Festival</h2>
+    <p class="about-text">
+      The Rochester Filipino Festival is a vibrant celebration of Filipino culture, heritage, 
+      and community in Upstate New York. Join us for a weekend filled with traditional 
+      performances, authentic cuisine, arts and crafts, and family-friendly activities. 
+      Experience the warmth and hospitality of the Filipino community while enjoying the 
+      rich cultural traditions that make our heritage unique.
+    </p>
+    
+    <div class="highlights-grid">
+      @for (highlight of highlights; track highlight.title) {
+        <div class="highlight-card">
+          <div class="highlight-icon">{{ highlight.icon }}</div>
+          <h3 class="highlight-title">{{ highlight.title }}</h3>
+          <p class="highlight-description">{{ highlight.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Event Details Section -->
+<section id="details" class="event-details">
+  <div class="container">
+    <h2 class="section-title">Event Information</h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <h3>📅 When</h3>
+        <p>{{ eventDetails.date }}</p>
+        <p class="detail-time">{{ eventDetails.time }}</p>
+      </div>
+      <div class="detail-card">
+        <h3>📍 Where</h3>
+        <p>{{ eventDetails.location }}</p>
+        <p class="detail-address">{{ eventDetails.address }}</p>
+      </div>
+      <div class="detail-card">
+        <h3>🎫 Admission</h3>
+        <p>FREE Entry</p>
+        <p class="detail-note">Open to the public</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule Section -->
+<section id="schedule" class="schedule">
+  <div class="container">
+    <h2 class="section-title">Festival Schedule</h2>
+    
+    <div class="schedule-tabs">
+      <div class="schedule-day">
+        <h3 class="day-title">Friday, July 25, 2026</h3>
+        <div class="schedule-list">
+          @for (item of schedule.friday; track item.time) {
+            <div class="schedule-item">
+              <span class="schedule-time">{{ item.time }}</span>
+              <span class="schedule-event">{{ item.event }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Food Section -->
+<section id="food" class="food">
+  <div class="container">
+    <h2 class="section-title">Filipino Cuisine</h2>
+    <p class="section-subtitle">
+      Experience the flavors of the Philippines! Our vendors will be serving 
+      authentic Filipino dishes, desserts, and beverages.
+    </p>
+    
+    <div class="food-grid">
+      @for (food of foods; track food) {
+        <div class="food-item">
+          <span class="food-icon">🍽️</span>
+          <span class="food-name">{{ food }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Vendors Section -->
+<section id="vendors" class="vendors">
+  <div class="container">
+    <h2 class="section-title">Vendors & Exhibitors</h2>
+    <p class="section-subtitle">
+      Discover unique Filipino products, crafts, and services from local vendors and artisans.
+    </p>
+    
+    <div class="vendor-categories">
+      <div class="vendor-category">
+        <h3>🛍️ Shopping</h3>
+        <p>Filipino groceries, clothing, jewelry, and handicrafts</p>
+      </div>
+      <div class="vendor-category">
+        <h3>🎨 Arts & Crafts</h3>
+        <p>Traditional Filipino art, paintings, and handmade items</p>
+      </div>
+      <div class="vendor-category">
+        <h3>💼 Services</h3>
+        <p>Community organizations and business services</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sponsors Section -->
+<section id="sponsors" class="sponsors">
+  <div class="container">
+    <h2 class="section-title">Our Sponsors</h2>
+    <p class="section-subtitle">
+      Thank you to our generous sponsors who make this festival possible!
+    </p>
+    
+    <div class="sponsor-info">
+      <p>
+        The Rochester Filipino Festival is made possible through the support of 
+        local businesses, community organizations, and individual donors who share 
+        our commitment to celebrating Filipino culture and heritage.
+      </p>
+      <p class="sponsor-cta">
+        Interested in sponsoring? Contact us at 
+        <a href="mailto:info@rochesterfilipinofestival.com">
+          info&#64;rochesterfilipinofestival.com
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📧 Email</h3>
+        <a href="mailto:info@rochesterfilipinofestival.com">
+          info&#64;rochesterfilipinofestival.com
+        </a>
+      </div>
+      
+      <div class="contact-card">
+        <h3>🌐 Website</h3>
+        <a href="https://rochesterfilipinofestival.upstatepinoy.com" target="_blank">
+          rochesterfilipinofestival.upstatepinoy.com
+        </a>
+      </div>
+      
+      <div class="contact-card">
+        <h3>📱 Social Media</h3>
+        <p>Follow us for updates and announcements</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Rochester Filipino Festival</h4>
+        <p>Celebrating Filipino culture in Upstate New York</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a (click)="scrollToSection('about')">About</a></li>
+          <li><a (click)="scrollToSection('schedule')">Schedule</a></li>
+          <li><a (click)="scrollToSection('food')">Food</a></li>
+          <li><a (click)="scrollToSection('contact')">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Location</h4>
+        <p>7272 W Henrietta Road</p>
+        <p>Rush, NY 14543</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} Rochester Filipino Festival. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
