@@ -78,12 +78,13 @@
         <p class="detail-time"><time datetime="11:00">{{ eventDetails.time }}</time></p>
         <p class="detail-note add-to-calendar">➕ Add to Calendar</p>
       </article>
-      <article class="detail-card" role="listitem" itemscope itemtype="https://schema.org/Place">
+      <article class="detail-card detail-card-clickable" role="listitem" itemscope itemtype="https://schema.org/Place" (click)="openGoogleMaps()" tabindex="0" (keydown.enter)="openGoogleMaps()" (keydown.space)="openGoogleMaps()">
         <h3>📍 Where</h3>
         <p itemprop="name">{{ eventDetails.location }}</p>
         <p class="detail-address" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
           <span itemprop="addressLocality">{{ eventDetails.address }}</span>
         </p>
+        <p class="detail-note add-to-calendar">🗺️ Get Directions</p>
       </article>
       <article class="detail-card" role="listitem">
         <h3>🎫 Admission</h3>

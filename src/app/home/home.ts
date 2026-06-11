@@ -107,4 +107,10 @@ export class Home {
     link.click();
     window.URL.revokeObjectURL(link.href);
   }
+
+  openGoogleMaps(): void {
+    const address = encodeURIComponent(`${this.eventDetails.location}, ${this.eventDetails.address}`);
+    const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${address}`;
+    window.open(mapsUrl, '_blank');
+  }
 }
