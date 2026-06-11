@@ -68,44 +68,27 @@ export class Home {
   }
 
   downloadCalendar(): void {
-    const eventStart = '20260725T110000'; // July 25, 2026, 11:00 AM
-    const eventEnd = '20260725T180000';   // July 25, 2026, 6:00 PM
-    const timestamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    // Use Google Calendar URL for better mobile compatibility
+    // This will open native calendar apps on mobile devices
+    const eventTitle = encodeURIComponent('Rochester Filipino Festival 2026');
+    const eventLocation = encodeURIComponent('7272 W Henrietta Road, Rush, NY 14543');
+    const eventDetails = encodeURIComponent(
+      'A vibrant celebration of Filipino culture, heritage, and community. ' +
+      'Featuring cultural performances, authentic Filipino cuisine, karaoke contest ($200 prize), ' +
+      'Prince & Princess pageant (ages 3-8), arts, crafts, and family activities. FREE admission!\n\n' +
+      'Organized by Filipino American Association of Rochester (FAAR)\n' +
+      'For more information: info@filamroc.org'
+    );
     
-    const icsContent = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Rochester Filipino Festival//EN',
-      'CALSCALE:GREGORIAN',
-      'METHOD:PUBLISH',
-      'X-WR-CALNAME:Rochester Filipino Festival',
-      'X-WR-TIMEZONE:America/New_York',
-      'BEGIN:VEVENT',
-      `DTSTART:${eventStart}`,
-      `DTEND:${eventEnd}`,
-      `DTSTAMP:${timestamp}`,
-      'UID:rochester-filipino-festival-2026@upstatepinoy.com',
-      'SUMMARY:Rochester Filipino Festival 2026',
-      'DESCRIPTION:A vibrant celebration of Filipino culture\\, heritage\\, and community. Featuring cultural performances\\, authentic Filipino cuisine\\, karaoke contest ($200 prize)\\, Prince & Princess pageant (ages 3-8)\\, arts\\, crafts\\, and family activities. FREE admission!\\n\\nOrganized by Filipino American Association of Rochester (FAAR)\\n\\nFor more information: info@filamroc.org',
-      'LOCATION:7272 W Henrietta Road\\, Rush\\, NY 14543',
-      'STATUS:CONFIRMED',
-      'SEQUENCE:0',
-      'BEGIN:VALARM',
-      'TRIGGER:-P1D',
-      'ACTION:DISPLAY',
-      'DESCRIPTION:Reminder: Rochester Filipino Festival tomorrow!',
-      'END:VALARM',
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
-
-    // Create blob and download
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.download = 'rochester-filipino-festival-2026.ics';
-    link.click();
-    window.URL.revokeObjectURL(link.href);
+    // Format: YYYYMMDDTHHmmSS/YYYYMMDDTHHmmSS (in UTC or local timezone)
+    const startDate = '20260725T110000';
+    const endDate = '20260725T180000';
+    const dates = `${startDate}/${endDate}`;
+    
+    // Google Calendar Add Event URL - works on mobile and desktop
+    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${dates}&details=${eventDetails}&location=${eventLocation}&sf=true&output=xml`;
+    
+    window.open(calendarUrl, '_blank');
   }
 
   openGoogleMaps(): void {
