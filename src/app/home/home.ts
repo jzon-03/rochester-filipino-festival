@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Home {
   currentYear = new Date().getFullYear();
+  navActive = false;
   
   eventDetails = {
     date: 'July 25, 2026',
@@ -58,5 +59,11 @@ export class Home {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    // Close mobile nav after clicking
+    this.navActive = false;
+  }
+
+  toggleNav(): void {
+    this.navActive = !this.navActive;
   }
 }

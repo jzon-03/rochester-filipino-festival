@@ -1,27 +1,53 @@
+<!-- Sticky Navigation -->
+<nav class="sticky-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <span class="nav-logo-text">🇵🇭 RFF 2026</span>
+    </div>
+    <ul class="nav-links" [class.active]="navActive">
+      <li><a (click)="scrollToSection('about')" tabindex="0" role="button">About</a></li>
+      <li><a (click)="scrollToSection('details')" tabindex="0" role="button">Details</a></li>
+      <li><a (click)="scrollToSection('karaoke')" tabindex="0" role="button">Karaoke Contest</a></li>
+      <li><a (click)="scrollToSection('pageant')" tabindex="0" role="button">Prince & Princess</a></li>
+      <!-- <li><a (click)="scrollToSection('food')" tabindex="0" role="button">Food</a></li> -->
+      <li><a (click)="scrollToSection('contact')" tabindex="0" role="button">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" (click)="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero" aria-label="Festival hero banner" itemscope itemtype="https://schema.org/Event">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1 class="hero-title">Rochester Filipino Festival</h1>
-    <p class="hero-subtitle">Celebrating Filipino Culture & Heritage</p>
+    <h1 class="hero-title" itemprop="name">Rochester Filipino Festival</h1>
+    <p class="hero-subtitle" itemprop="description">Celebrating Filipino Culture & Heritage</p>
     <div class="hero-details">
-      <p class="hero-date">{{ eventDetails.date }}</p>
-      <p class="hero-location">{{ eventDetails.location }}</p>
+      <p class="hero-date" itemprop="startDate" content="2026-07-25T11:00:00-04:00">{{ eventDetails.date }}</p>
+      <p class="hero-location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+        <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+          <span itemprop="streetAddress">{{ eventDetails.location }}</span>
+        </span>
+      </p>
     </div>
-    <button class="cta-button" (click)="scrollToSection('details')">
+    <button class="cta-button" (click)="scrollToSection('details')" aria-label="Jump to event details section">
       Event Details
     </button>
   </div>
-  <div class="scroll-indicator" (click)="scrollToSection('about')">
+  <div class="scroll-indicator" (click)="scrollToSection('about')" role="button" tabindex="0" aria-label="Scroll to about section">
     <span>↓</span>
   </div>
 </section>
 
 <!-- About Section -->
-<section id="about" class="about">
+<section id="about" class="about" aria-labelledby="about-heading" itemscope itemtype="https://schema.org/AboutPage">
   <div class="container">
-    <h2 class="section-title">Welcome to Our Festival</h2>
-    <p class="about-text">
+    <h2 id="about-heading" class="section-title" itemprop="name">Welcome to Our Festival</h2>
+    <p class="about-text" itemprop="description">
       The Rochester Filipino Festival is a vibrant celebration of Filipino culture, heritage, 
       and community in Upstate New York. Join us for a weekend filled with traditional 
       performances, authentic cuisine, arts and crafts, and family-friendly activities. 
@@ -29,70 +55,186 @@
       rich cultural traditions that make our heritage unique.
     </p>
     
-    <div class="highlights-grid">
+    <div class="highlights-grid" role="list">
       @for (highlight of highlights; track highlight.title) {
-        <div class="highlight-card">
-          <div class="highlight-icon">{{ highlight.icon }}</div>
-          <h3 class="highlight-title">{{ highlight.title }}</h3>
-          <p class="highlight-description">{{ highlight.description }}</p>
-        </div>
+        <article class="highlight-card" role="listitem" itemscope itemtype="https://schema.org/Thing">
+          <div class="highlight-icon" aria-hidden="true">{{ highlight.icon }}</div>
+          <h3 class="highlight-title" itemprop="name">{{ highlight.title }}</h3>
+          <p class="highlight-description" itemprop="description">{{ highlight.description }}</p>
+        </article>
       }
     </div>
   </div>
 </section>
 
 <!-- Event Details Section -->
-<section id="details" class="event-details">
+<section id="details" class="event-details" aria-labelledby="details-heading">
   <div class="container">
-    <h2 class="section-title">Event Information</h2>
-    <div class="details-grid">
-      <div class="detail-card">
+    <h2 id="details-heading" class="section-title">Event Information</h2>
+    <div class="details-grid" role="list">
+      <article class="detail-card" role="listitem">
         <h3>📅 When</h3>
-        <p>{{ eventDetails.date }}</p>
-        <p class="detail-time">{{ eventDetails.time }}</p>
-      </div>
-      <div class="detail-card">
+        <p><time datetime="2026-07-25">{{ eventDetails.date }}</time></p>
+        <p class="detail-time"><time datetime="11:00">{{ eventDetails.time }}</time></p>
+      </article>
+      <article class="detail-card" role="listitem" itemscope itemtype="https://schema.org/Place">
         <h3>📍 Where</h3>
-        <p>{{ eventDetails.location }}</p>
-        <p class="detail-address">{{ eventDetails.address }}</p>
-      </div>
-      <div class="detail-card">
+        <p itemprop="name">{{ eventDetails.location }}</p>
+        <p class="detail-address" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+          <span itemprop="addressLocality">{{ eventDetails.address }}</span>
+        </p>
+      </article>
+      <article class="detail-card" role="listitem">
         <h3>🎫 Admission</h3>
         <p>FREE Entry</p>
         <p class="detail-note">Open to the public</p>
-      </div>
-      <div class="detail-card">
+      </article>
+      <article class="detail-card" role="listitem">
         <h3>ℹ️ Event Information</h3>
-        <a href="https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ" target="_blank" class="detail-link">
+        <a href="https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ" target="_blank" rel="noopener noreferrer" class="detail-link" aria-label="View event on Eventbrite">
           <p class="detail-note">Eventbrite Page</p>
         </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Karaoke Contest Section -->
+<section id="karaoke" class="karaoke-contest" aria-labelledby="karaoke-heading">
+  <div class="container">
+    <div class="karaoke-content">
+      <div class="karaoke-icon">🎤</div>
+      <h2 id="karaoke-heading" class="section-title">Karaoke Contest</h2>
+      <p class="karaoke-subtitle">Show off your singing talent and win big!</p>
+      
+      <div class="karaoke-details">
+        <div class="karaoke-detail-item">
+          <span class="karaoke-label">Registration Fee</span>
+          <span class="karaoke-value">$25</span>
+        </div>
+        <div class="karaoke-detail-item grand-prize">
+          <span class="karaoke-label">Grand Prize</span>
+          <span class="karaoke-value prize-amount">$200</span>
+        </div>
       </div>
+      
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdd14bS5GE5-UVlvGBr5V1M4wZV_Kf6Z9OFEVvtXy1f19BNcQ/viewform?pli=1" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="karaoke-register-button"
+         aria-label="Register for karaoke contest">
+        Register Now
+      </a>
+      
+      <p class="karaoke-note">Limited spots available! Register early to secure your place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Prince & Princess Pageant Section -->
+<section id="pageant" class="pageant" aria-labelledby="pageant-heading">
+  <div class="container">
+    <div class="pageant-header">
+      <div class="crown-icons">
+        <span class="crown-icon">👑</span>
+        <span class="crown-icon">✨</span>
+        <span class="crown-icon">👑</span>
+      </div>
+      <h2 id="pageant-heading" class="section-title">FAAR Prince & Princess 2026</h2>
+      <p class="pageant-subtitle">Calling all little princes and princesses ages 3–8!</p>
+    </div>
+    
+    <div class="pageant-intro">
+      <p>Join us for a fun-filled fundraising pageant where confidence, talent, and community spirit take center stage.</p>
+    </div>
+    
+    <div class="pageant-competitions">
+      <h3 class="pageant-section-title">Competition Segments</h3>
+      <div class="competition-grid">
+        <article class="competition-card">
+          <div class="competition-icon">👕</div>
+          <h4>Sportswear Fashion Show</h4>
+        </article>
+        <article class="competition-card">
+          <div class="competition-icon">👗</div>
+          <h4>Formal Wear Competition</h4>
+          <p class="competition-note">Plus points for national attire!</p>
+        </article>
+        <article class="competition-card">
+          <div class="competition-icon">🎭</div>
+          <h4>Talent Show</h4>
+        </article>
+        <article class="competition-card">
+          <div class="competition-icon">💬</div>
+          <h4>Question & Answer</h4>
+        </article>
+      </div>
+    </div>
+    
+    <div class="pageant-fundraising">
+      <div class="fundraising-highlight">
+        <h3>🌟 Fundraising Component 🌟</h3>
+        <p>Each contestant will receive donation envelopes to share with family and friends. <strong>The contestant who raises the highest amount of donations will be crowned FAAR Prince or Princess 2026!</strong></p>
+      </div>
+    </div>
+    
+    <div class="pageant-judging">
+      <h3 class="pageant-section-title">Judging Criteria</h3>
+      <div class="judging-grid">
+        <div class="judging-item">
+          <div class="judging-percentage">40%</div>
+          <div class="judging-label">Fundraising/Overall Winner</div>
+        </div>
+        <div class="judging-item">
+          <div class="judging-percentage">20%</div>
+          <div class="judging-label">Talent</div>
+        </div>
+        <div class="judging-item">
+          <div class="judging-percentage">20%</div>
+          <div class="judging-label">Question & Answer</div>
+        </div>
+        <div class="judging-item">
+          <div class="judging-percentage">20%</div>
+          <div class="judging-label">Best in Formal Attire</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pageant-register">
+      <p class="pageant-cta-text">Register today and let your little star shine!</p>
+      <a href="https://forms.gle/XQMvibT5xHVBHd119?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExQ3lFV3NFd2lFamluZFA1dnNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR6cQk6Km3lllc2Rshk2nBjlPutdtvCjjS9Yd7WbSp1a2t2U2cEfT18Tz7Yp3w_aem_mU8_KrCzInKQgFDlOBJDMw" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="pageant-register-button"
+         aria-label="Register for FAAR Prince and Princess pageant">
+        Register Your Little Star
+      </a>
     </div>
   </div>
 </section>
 
 <!-- Food Section -->
-<section id="food" class="food">
+<!-- <section id="food" class="food" aria-labelledby="food-heading">
   <div class="container">
-    <h2 class="section-title">Filipino Cuisine</h2>
+    <h2 id="food-heading" class="section-title">Filipino Cuisine</h2>
     <p class="section-subtitle">
       Experience the flavors of the Philippines! Our vendors will be serving 
       authentic Filipino dishes, desserts, and beverages.
     </p>
     
-    <div class="food-grid">
+    <nav class="food-grid" role="list" aria-label="Filipino dishes available at festival">
       @for (food of foods; track food) {
-        <div class="food-item">
-          <span class="food-icon">🍽️</span>
+        <div class="food-item" role="listitem">
+          <span class="food-icon" aria-hidden="true">🍽️</span>
           <span class="food-name">{{ food }}</span>
         </div>
       }
-    </div>
+    </nav>
   </div>
-</section>
+</section> -->
 
 <!-- Vendors Section -->
-<section id="vendors" class="vendors">
+<!-- <section id="vendors" class="vendors">
   <div class="container">
     <h2 class="section-title">Vendors & Exhibitors</h2>
     <p class="section-subtitle">
@@ -114,19 +256,19 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- Made Possible By Section -->
-<section id="sponsors" class="sponsors">
+<section id="sponsors" class="sponsors" aria-labelledby="sponsors-heading" itemscope itemtype="https://schema.org/Organization">
   <div class="container">
-    <h2 class="section-title">Made Possible By</h2>
+    <h2 id="sponsors-heading" class="section-title">Made Possible By</h2>
     <p class="section-subtitle">
       This event is brought to you by the Filipino American Association of Rochester
     </p>
     
-    <div class="sponsor-info">
-      <h3 class="faar-title">Filipino American Association of Rochester (FAAR)</h3>
-      <p>
+    <article class="sponsor-info">
+      <h3 class="faar-title" itemprop="name">Filipino American Association of Rochester (FAAR)</h3>
+      <p itemprop="description">
         The Filipino American Association of Rochester (FAAR) is dedicated to promoting 
         Filipino culture, heritage, and community engagement in the Greater Rochester area. 
         Through events like the Rochester Filipino Festival, FAAR brings together Filipino 
@@ -135,41 +277,41 @@
       </p>
       <p class="sponsor-cta">
         Learn more about FAAR and get involved: 
-        <a href="mailto:info@filamroc.org">
+        <a href="mailto:info@filamroc.org" itemprop="email" aria-label="Email FAAR">
           info&#64;filamroc.org
         </a> | 
-        <a href="http://www.filamroc.org" target="_blank">
+        <a href="http://www.filamroc.org" target="_blank" rel="noopener noreferrer" itemprop="url" aria-label="Visit FAAR website">
           www.filamroc.org
         </a>
       </p>
-    </div>
+    </article>
   </div>
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="contact">
+<section id="contact" class="contact" aria-labelledby="contact-heading" itemscope itemtype="https://schema.org/ContactPage">
   <div class="container">
-    <h2 class="section-title">Get In Touch</h2>
+    <h2 id="contact-heading" class="section-title">Get In Touch</h2>
     
-    <div class="contact-grid">
-      <div class="contact-card">
+    <div class="contact-grid" role="list">
+      <article class="contact-card" role="listitem">
         <h3>📧 Email</h3>
-        <a href="mailto:info@filamroc.org">
+        <a href="mailto:info@filamroc.org" itemprop="email" aria-label="Send email to FAAR">
           info&#64;filamroc.org
         </a>
-      </div>
+      </article>
       
-      <div class="contact-card">
+      <article class="contact-card" role="listitem">
         <h3>🌐 Website</h3>
-        <a href="https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ" target="_blank">
+        <a href="https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ" target="_blank" rel="noopener noreferrer" aria-label="View event on Eventbrite">
           EventBrite Page
         </a>
-      </div>
+      </article>
       
-      <div class="contact-card">
+      <article class="contact-card" role="listitem">
         <h3>📱 Social Media</h3>
         <p>Follow us for updates and announcements</p>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -188,7 +330,9 @@
         <ul>
           <li><a (click)="scrollToSection('about')">About</a></li>
           <li><a (click)="scrollToSection('details')">Details</a></li>
-          <li><a (click)="scrollToSection('food')">Food</a></li>
+          <li><a (click)="scrollToSection('karaoke')">Karaoke Contest</a></li>
+          <li><a (click)="scrollToSection('pageant')">Prince & Princess</a></li>
+          <!-- <li><a (click)="scrollToSection('food')">Food</a></li> -->
           <li><a (click)="scrollToSection('contact')">Contact</a></li>
         </ul>
       </div>
@@ -201,7 +345,7 @@
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} Rochester Filipino Festival. All rights reserved.</p>
+      <p>&copy; {{ currentYear }} Filipino-American Association of Rochester. All rights reserved.</p>
     </div>
   </div>
 </footer>

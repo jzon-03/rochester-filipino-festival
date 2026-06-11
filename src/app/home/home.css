@@ -18,11 +18,168 @@
   box-sizing: border-box;
 }
 
+/* Sticky Navigation */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 56, 168, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--primary-yellow);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(252, 209, 22, 0.2);
+  color: var(--primary-yellow);
+}
+
+.nav-links a:hover::after {
+  width: 80%;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 1rem;
+  }
+  
+  .nav-toggle {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 56, 168, 0.98);
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-links.active {
+    transform: translateY(0);
+  }
+  
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 1rem;
+    border-radius: 0;
+  }
+  
+  .nav-links a::after {
+    display: none;
+  }
+  
+  .nav-links a:hover {
+    background: rgba(252, 209, 22, 0.3);
+  }
+}
+
 /* Hero Section */
 .hero {
   position: relative;
   height: 100vh;
   min-height: 600px;
+  margin-top: 70px;
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
   background-image: 
     var(--gradient-hero),
@@ -372,6 +529,473 @@ section {
   font-size: 0.95rem;
   color: var(--gray-medium);
   font-weight: 400;
+}
+
+/* Karaoke Contest Section */
+.karaoke-contest {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  color: var(--white);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.karaoke-contest::before {
+  content: '🎵';
+  position: absolute;
+  font-size: 15rem;
+  opacity: 0.1;
+  top: -3rem;
+  right: 5%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.karaoke-contest::after {
+  content: '🎶';
+  position: absolute;
+  font-size: 10rem;
+  opacity: 0.1;
+  bottom: -2rem;
+  left: 5%;
+  animation: float 5s ease-in-out infinite reverse;
+}
+
+.karaoke-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.karaoke-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.karaoke-contest .section-title {
+  color: var(--white);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.karaoke-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.karaoke-details {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.karaoke-detail-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.karaoke-detail-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.karaoke-detail-item.grand-prize {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.karaoke-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.karaoke-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.prize-amount {
+  color: #FFD700;
+  font-size: 3.5rem;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.karaoke-register-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #1a1a1a;
+  padding: 1.5rem 4rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 25px rgba(255, 215, 0, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.karaoke-register-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.karaoke-register-button:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.karaoke-register-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 12px 35px rgba(255, 215, 0, 0.6),
+    0 0 60px rgba(255, 215, 0, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.karaoke-note {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .karaoke-details {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .karaoke-detail-item {
+    min-width: auto;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+/* Prince & Princess Pageant Section */
+.pageant {
+  background: linear-gradient(135deg, #FFB6C1 0%, #DDA0DD 30%, #87CEEB 60%, #FFD700 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.pageant::before {
+  content: '⭐';
+  position: absolute;
+  font-size: 12rem;
+  opacity: 0.08;
+  top: 5%;
+  left: 10%;
+  animation: float 7s ease-in-out infinite;
+}
+
+.pageant::after {
+  content: '✨';
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.08;
+  bottom: 10%;
+  right: 15%;
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+.pageant-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.crown-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+}
+
+.crown-icon {
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+}
+
+.crown-icon:nth-child(2) {
+  animation-delay: 0.5s;
+  font-size: 2.5rem;
+}
+
+.pageant .section-title {
+  color: var(--dark);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 
+    2px 2px 4px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.pageant-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: #4A154B;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.pageant-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.pageant-intro p {
+  font-size: 1.2rem;
+  color: var(--dark);
+  line-height: 1.8;
+}
+
+.pageant-section-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #4A154B;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.pageant-competitions {
+  margin-bottom: 3rem;
+}
+
+.competition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.competition-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.competition-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.6);
+}
+
+.competition-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.competition-card h4 {
+  font-size: 1.3rem;
+  color: #4A154B;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.competition-note {
+  font-size: 0.9rem;
+  color: #D63384;
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.pageant-fundraising {
+  margin-bottom: 3rem;
+}
+
+.fundraising-highlight {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 182, 193, 0.2));
+  border: 3px solid rgba(255, 215, 0, 0.5);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.fundraising-highlight h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #4A154B;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.fundraising-highlight p {
+  font-size: 1.15rem;
+  color: var(--dark);
+  line-height: 1.8;
+}
+
+.fundraising-highlight strong {
+  color: #D63384;
+  font-weight: 800;
+}
+
+.pageant-judging {
+  margin-bottom: 3rem;
+}
+
+.judging-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.judging-item {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 2rem 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid rgba(135, 206, 235, 0.5);
+  transition: all 0.3s ease;
+}
+
+.judging-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(135, 206, 235, 0.4);
+  border-color: rgba(135, 206, 235, 0.8);
+}
+
+.judging-percentage {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #4A154B;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+.judging-label {
+  font-size: 1rem;
+  color: var(--dark);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.pageant-register {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.pageant-cta-text {
+  font-size: 1.5rem;
+  color: #4A154B;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.pageant-register-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF69B4 100%);
+  color: var(--white);
+  padding: 1.5rem 4rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 25px rgba(255, 105, 180, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.pageant-register-button::before {
+  content: '👑';
+  position: absolute;
+  left: 1.5rem;
+  font-size: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.pageant-register-button::after {
+  content: '👑';
+  position: absolute;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.pageant-register-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 12px 35px rgba(255, 105, 180, 0.6),
+    0 0 60px rgba(255, 215, 0, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .competition-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .judging-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .crown-icons {
+    gap: 1rem;
+    font-size: 2.5rem;
+  }
 }
 
 /* Food Section */
