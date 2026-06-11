@@ -72,10 +72,11 @@
   <div class="container">
     <h2 id="details-heading" class="section-title">Event Information</h2>
     <div class="details-grid" role="list">
-      <article class="detail-card" role="listitem">
+      <article class="detail-card detail-card-clickable" role="listitem" (click)="downloadCalendar()" tabindex="0" (keydown.enter)="downloadCalendar()" (keydown.space)="downloadCalendar()">
         <h3>📅 When</h3>
         <p><time datetime="2026-07-25">{{ eventDetails.date }}</time></p>
         <p class="detail-time"><time datetime="11:00">{{ eventDetails.time }}</time></p>
+        <p class="detail-note add-to-calendar">➕ Add to Calendar</p>
       </article>
       <article class="detail-card" role="listitem" itemscope itemtype="https://schema.org/Place">
         <h3>📍 Where</h3>

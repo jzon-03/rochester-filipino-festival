@@ -531,6 +531,52 @@ section {
   font-weight: 400;
 }
 
+.detail-card-clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-card-clickable::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(252, 209, 22, 0.1), rgba(0, 56, 168, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.detail-card-clickable:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 8px 25px rgba(252, 209, 22, 0.3),
+    0 0 20px rgba(0, 56, 168, 0.2);
+  border: 2px solid var(--primary-yellow);
+}
+
+.detail-card-clickable:hover::before {
+  opacity: 1;
+}
+
+.add-to-calendar {
+  color: var(--primary-blue) !important;
+  font-weight: 600 !important;
+  margin-top: 1rem;
+  font-size: 1rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.detail-card-clickable:hover .add-to-calendar {
+  color: var(--primary-yellow) !important;
+}
+
 /* Karaoke Contest Section */
 .karaoke-contest {
   background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
