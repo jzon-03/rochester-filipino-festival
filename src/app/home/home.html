@@ -8,8 +8,8 @@
       <p class="hero-date">{{ eventDetails.date }}</p>
       <p class="hero-location">{{ eventDetails.location }}</p>
     </div>
-    <button class="cta-button" (click)="scrollToSection('schedule')">
-      View Schedule
+    <button class="cta-button" (click)="scrollToSection('details')">
+      Event Details
     </button>
   </div>
   <div class="scroll-indicator" (click)="scrollToSection('about')">
@@ -61,26 +61,11 @@
         <p>FREE Entry</p>
         <p class="detail-note">Open to the public</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Schedule Section -->
-<section id="schedule" class="schedule">
-  <div class="container">
-    <h2 class="section-title">Festival Schedule</h2>
-    
-    <div class="schedule-tabs">
-      <div class="schedule-day">
-        <h3 class="day-title">Friday, July 25, 2026</h3>
-        <div class="schedule-list">
-          @for (item of schedule.friday; track item.time) {
-            <div class="schedule-item">
-              <span class="schedule-time">{{ item.time }}</span>
-              <span class="schedule-event">{{ item.event }}</span>
-            </div>
-          }
-        </div>
+      <div class="detail-card">
+        <h3>ℹ️ Event Information</h3>
+        <a href="https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ" target="_blank" class="detail-link">
+          <p class="detail-note">Eventbrite Page</p>
+        </a>
       </div>
     </div>
   </div>
@@ -131,24 +116,30 @@
   </div>
 </section>
 
-<!-- Sponsors Section -->
+<!-- Made Possible By Section -->
 <section id="sponsors" class="sponsors">
   <div class="container">
-    <h2 class="section-title">Our Sponsors</h2>
+    <h2 class="section-title">Made Possible By</h2>
     <p class="section-subtitle">
-      Thank you to our generous sponsors who make this festival possible!
+      This event is brought to you by the Filipino American Association of Rochester
     </p>
     
     <div class="sponsor-info">
+      <h3 class="faar-title">Filipino American Association of Rochester (FAAR)</h3>
       <p>
-        The Rochester Filipino Festival is made possible through the support of 
-        local businesses, community organizations, and individual donors who share 
-        our commitment to celebrating Filipino culture and heritage.
+        The Filipino American Association of Rochester (FAAR) is dedicated to promoting 
+        Filipino culture, heritage, and community engagement in the Greater Rochester area. 
+        Through events like the Rochester Filipino Festival, FAAR brings together Filipino 
+        Americans and the broader community to celebrate our rich traditions, cuisine, 
+        and vibrant culture.
       </p>
       <p class="sponsor-cta">
-        Interested in sponsoring? Contact us at 
-        <a href="mailto:info@rochesterfilipinofestival.com">
-          info&#64;rochesterfilipinofestival.com
+        Learn more about FAAR and get involved: 
+        <a href="mailto:info@filamroc.org">
+          info&#64;filamroc.org
+        </a> | 
+        <a href="http://www.filamroc.org" target="_blank">
+          www.filamroc.org
         </a>
       </p>
     </div>
@@ -163,15 +154,15 @@
     <div class="contact-grid">
       <div class="contact-card">
         <h3>📧 Email</h3>
-        <a href="mailto:info@rochesterfilipinofestival.com">
-          info&#64;rochesterfilipinofestival.com
+        <a href="mailto:info@filamroc.org">
+          info&#64;filamroc.org
         </a>
       </div>
       
       <div class="contact-card">
         <h3>🌐 Website</h3>
-        <a href="https://rochesterfilipinofestival.upstatepinoy.com" target="_blank">
-          rochesterfilipinofestival.upstatepinoy.com
+        <a href="https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ" target="_blank">
+          EventBrite Page
         </a>
       </div>
       
@@ -196,7 +187,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a (click)="scrollToSection('about')">About</a></li>
-          <li><a (click)="scrollToSection('schedule')">Schedule</a></li>
+          <li><a (click)="scrollToSection('details')">Details</a></li>
           <li><a (click)="scrollToSection('food')">Food</a></li>
           <li><a (click)="scrollToSection('contact')">Contact</a></li>
         </ul>
