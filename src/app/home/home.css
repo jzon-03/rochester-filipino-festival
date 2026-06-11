@@ -43,6 +43,14 @@
 .nav-logo {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-logo-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .nav-logo-text {

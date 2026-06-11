@@ -96,4 +96,9 @@ export class Home {
     const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${address}`;
     window.open(mapsUrl, '_blank');
   }
+
+  openEventbrite(): void {
+    const eventbriteUrl = 'https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ';
+    window.open(eventbriteUrl, '_blank');
+  }
 }

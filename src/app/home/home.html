@@ -2,7 +2,8 @@
 <nav class="sticky-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
     <div class="nav-logo">
-      <span class="nav-logo-text">🇵🇭 RFF 2026</span>
+      <img src="favicon.png" alt="Rochester Filipino Festival Logo" class="nav-logo-icon">
+      <span class="nav-logo-text">RFF 2026</span>
     </div>
     <ul class="nav-links" [class.active]="navActive">
       <li><a (click)="scrollToSection('about')" tabindex="0" role="button">About</a></li>
@@ -86,16 +87,11 @@
         </p>
         <p class="detail-note add-to-calendar">🗺️ Get Directions</p>
       </article>
-      <article class="detail-card" role="listitem">
+      <article class="detail-card detail-card-clickable" role="listitem" (click)="openEventbrite()" tabindex="0" (keydown.enter)="openEventbrite()" (keydown.space)="openEventbrite()">
         <h3>🎫 Admission</h3>
         <p>FREE Entry</p>
-        <p class="detail-note">Open to the public</p>
-      </article>
-      <article class="detail-card" role="listitem">
-        <h3>ℹ️ Event Information</h3>
-        <a href="https://www.eventbrite.com/e/rochester-filipino-festival-tickets-1990107591378?aff=oddtdtcreator&fbclid=IwY2xjawSFUj9leHRuA2FlbQIxMABicmlkETFQYkxiZ1VwcmFMTjVoT1Rac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl9kZxu7yiSiAE7N-sKepYiTvEpZRPyJ6Ltii34fvNehMlUQgbVILKzFAZvr_aem_uggQHgBqLUAdpDOvP_LuPQ" target="_blank" rel="noopener noreferrer" class="detail-link" aria-label="View event on Eventbrite">
-          <p class="detail-note">Eventbrite Page</p>
-        </a>
+        <p class="detail-note">Register now!</p>
+        <p class="detail-note add-to-calendar">🔗 Eventbrite Page</p>
       </article>
     </div>
   </div>
