@@ -2,29 +2,3 @@
   display: block;
   min-height: 100vh;
 }
-
-.fourth-of-july {
-  background: linear-gradient(135deg, #b22234 0%, #ffffff 50%, #3c3b6b 100%);
-  padding: 3rem 2rem;
-  text-align: center;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 
-               -2px -2px 4px rgba(255, 255, 255, 0.3);
-  letter-spacing: 2px;
-  animation: patrioticPulse 1.5s ease-in-out infinite;
-  border-top: 5px solid #b22234;
-  border-bottom: 5px solid #3c3b6b;
-}
-
-@keyframes patrioticPulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(178, 34, 52, 0.5);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(60, 59, 107, 0.7);
-  }
-}
